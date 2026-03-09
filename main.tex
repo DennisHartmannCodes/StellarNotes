@@ -1,0 +1,516 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry} 
+\usepackage{amsmath,amsthm,amssymb,amsfonts, fancyhdr, color, comment, graphicx, environ}
+\usepackage{xcolor}
+\usepackage{mdframed}
+\usepackage[shortlabels]{enumitem}
+\usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{cancel}
+\newcommand\aug{\fboxsep=-\fboxrule\!\!\!\fbox{\strut}\!\!\!}
+\graphicspath{ {./images/} }
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+}
+
+
+\pagestyle{fancy}
+
+\lhead{Dennis Hartmann}
+
+\begin{document}
+
+Notes for graduate Stellar Astrophysics at JHU Spring 2026
+
+\section{Hydrostatic Eq., Time scales, Molecular weights}
+
+Some definitions for the rest of the notes
+
+\begin{itemize}
+    \item Internal radius $r$, total radius $R$
+    \item Mass density at $r$, $\rho(r)$
+    \item Temperature at $r$, $T(r)$
+    \item Pressure at $r$, $P(r)$
+    \item Enclosed mass at $r$, $M(r) = M_r$, total $M = M_R$
+    \item Luminosity at $r$, $L_r$, total $L_R$
+    \item Local gravity $g(r)$
+\end{itemize}
+
+\subsection{Hydrostatic equilibrium}
+
+Internal gravity is given by
+
+\begin{equation}
+    g(r) = \frac{GM_r}{r^2}.
+\end{equation}
+
+We also have mass conservation
+
+\begin{equation}
+    M_{r + dr} - M_r = 4\pi r^2 \rho(r)dr,
+\end{equation}
+
+which gives 
+
+\begin{equation}
+    M_r = \int_0^r 4\pi r^2 \rho(r)dr.
+\end{equation}
+
+The force acting on a 1 cm$^2$ area on a shell at $r$
+
+\begin{equation}
+    \rho g dr = \rho \frac{GM_r}{r^2}dr,
+\end{equation}
+
+then use this to find Hydrostatic equilibrium 
+
+\begin{equation}
+    \boxed{\frac{dP}{dr} = -\rho g = -\rho \frac{GM_r}{r^2}}.
+\end{equation}
+
+Or in Lagrangian units
+
+\begin{equation}
+    \boxed{\frac{dP}{dM_r} = -\frac{GM_r}{4\pi r^2}}
+\end{equation}
+
+Since $rho, g > 0$, $\frac{dP}{dr} < 0$.
+
+\subsection{Energy and timescales}
+
+\textbf{Something about Virial theorem}
+
+\begin{equation}
+    \boxed{\frac{1}{2}\frac{d^2I}{dt^2} = \int_M \frac{3P}{\rho}dM_r + \Omega}
+\end{equation}
+
+\textbf{Kelvin-Helmholtz time}
+
+\begin{equation}
+    \boxed{t_{kh} = \frac{q}{2}\frac{GM^2}{LR}}
+\end{equation}
+
+\textbf{Dynamical time}
+
+\begin{equation}
+    \boxed{t_{dy} = \frac{1}{[G\langle \rho\rangle]^{1/2}}}
+\end{equation}
+
+where 
+
+\begin{equation}
+    \langle \rho\rangle \approx \frac{M}{R^3}
+\end{equation}
+
+\textbf{Sound crossing time}
+
+\begin{equation}
+    \boxed{T = \frac{2R}{v_s}}
+\end{equation}
+
+What do they mean?\\
+
+\begin{itemize}
+    \item Kelvin-Helmholtz - $e$ folding time for a spherically contracting body under influence of gravity
+
+    \item Dynamical time - $e$ folding time for changes in radius when star is perturbed
+
+    \item Sounds crossing time - speed of information travel
+\end{itemize}
+
+\subsection{Constant density model}
+
+\textbf{revisit}
+
+\subsection{Molecular weights}
+
+Take a gas of atoms, ions, and electrons to be neutral. Then index nuclei by $i$, charge $Z_i$, mass $A_i$, and fraction of total mass $X_i$. Then 
+
+\begin{equation}
+    n_I = \frac{\rho X_i N_a}{A_i} = \frac{\rho N_a}{\mu_I}
+\end{equation}
+
+where 
+
+\begin{equation}
+    \mu_I = \left[\sum_i \frac{X_i}{A_i}\right]^{-1}.
+\end{equation}
+
+The equation for pressure is
+
+\begin{equation}
+    P = \frac{\rho N_a kT}{\mu}
+\end{equation}
+
+\section{Thermal balance, Homologies, HR diagrams}
+
+\subsection{Thermal balance}
+
+Take the energy in a gram of stellar material to be efficiently moved in order to maintain equilibrium. The energy generation rate is $\varepsilon$ [erg g$^{-1}$ s$^{-1}$]. The total energy in a shell is 
+
+\begin{equation}
+    4\pi r^2 \rho \varepsilon = \varepsilon dM_r.
+\end{equation}
+
+From this, we can get the scaling 
+
+\begin{equation}
+    \boxed{\frac{dL_r}{dr} = 4\pi r^2 \rho \varepsilon}
+\end{equation}
+
+or in Lagrangian coordinates
+
+\begin{equation}
+    \boxed{\frac{dL_r}{dM_r} = \varepsilon}
+\end{equation}
+
+If $\varepsilon = \varepsilon_0 \rho^\lambda T^\nu$, then for the pp chain $\lambda = 1, \nu \approx 4$, and for CNO $\lambda = 1, \nu \approx 15$.
+
+\subsection{Energy transport}
+
+There are three categories of energy transport, radiative, convective, and conductive. Regular stars are radiative and convective. White dwarfs undergo conduction.\\
+
+Radiation transport is diffusive
+
+\begin{equation}
+    F(r) = -D\frac{d}{dr} aT^4,
+\end{equation}
+
+where $aT^4$ is the energy density of radiation, and $D$ is the diffusion coefficient. This gives a luminosity
+
+\begin{equation}
+    L_r = -\frac{4\pi r^2 c}{3\kappa \rho} \frac{d}{dr}aT^4.
+\end{equation}
+
+If $\kappa = \kappa_0 \rho^n T^-s$, for Thompson opacity $n=s=0$, for Kramer's opacity $n = 1, s = 3.5$.
+
+\subsection{Homology}
+
+Relating similar stars can be done via comparisons to just mass. $R\propto M^{\alpha_R}, \rho\propto M^{\alpha_\rho}, T\propto M^{\alpha_T}$ and $L\propto M^{\alpha_L}$. For \textbf{massive main sequence stars},
+
+\begin{itemize}
+    \item $\alpha_R = 0.78$
+    \item $\alpha_\rho = -1.33$
+    \item $\alpha_L = 3.0$
+    \item $\alpha_T = 0.22$
+\end{itemize}
+
+The scaling for real stars follows
+
+\begin{equation}
+    \frac{R}{R_\odot} = \left(\frac{M}{M_\odot}\right)^{0.75}
+\end{equation}
+
+and
+
+\begin{equation}
+    \frac{L}{L_\odot} = \left(\frac{M}{M_\odot}\right)^{3.5}.
+\end{equation}
+
+For \textbf{low mass main sequence stars}
+
+\begin{itemize}
+    \item $\alpha_R = 0.2$
+    \item $\alpha_\rho = 0.4$
+    \item $\alpha_L = 5.4$
+    \item $\alpha_T = 0.8$
+\end{itemize}
+
+There is a big issue since the real scaling is 
+
+\begin{equation}
+    \frac{L}{L_\odot} = \left(\frac{M}{M_\odot}\right)^{3.9}
+\end{equation}
+
+\textbf{WHY?}
+
+\subsection{Main sequence lifetime}
+
+Main sequence ends when a star burns about 10\% of its Hydrogen
+
+\begin{equation}
+    t_{\rm nuc} = \frac{0.1 X M \varepsilon}{L} = 10^{10}\left(\frac{M}{M_\odot}\right)\left(\frac{L}{L_\odot}\right)^{-1} {\rm yrs}
+\end{equation}
+
+If we sub in the luminosity-mass scaling $L/L_\odot = (M/M\odot)^{3.5}$ then
+
+\begin{equation}
+    t_{\rm nuc} = 10^{10}\left(\frac{M}{M_\odot}\right)^{-2.5} {\rm yrs}
+\end{equation}
+
+\section{Young stellar objects, ZAMS, Ages of clusters}
+
+\subsection{YSOs}
+
+Stars are objects that resist gravitational collapse via thermonuclear fusion. Protostars become stars when energy generation via fusion outweighs gravitational collapse. There are three categories of YSOs
+
+\begin{itemize}
+    \item Class I - Inside molecular cloud core
+    \item Class II - T Tauri
+    \item Class III - ZAMS, quickly rotating
+\end{itemize}
+
+YSOs remove their molecular cloud core envelopes via feedback. High mass YSOs through radiative feedback, low mass YSOs through jets.
+
+\subsection{Properties of YSOs}
+\begin{enumerate}
+    \item Variable - \textbf{why?}
+    \item Emission lines from accretion, protostellar disk, or corona
+    \item Orbitted by dust
+    \item Rapid rotation + deep convective cells = strong magnetic fields and X-ray emission
+    \item Chemically homogeneous from convective mixing
+    \item Settle to ZAMS on Kelvin-Helmholtz timescale
+\end{enumerate}
+
+\subsection{Zero Age Main Sequence (ZAMS)}
+Outcome split by mass\\
+
+ZAMS $M \lesssim 1.5 M_\odot$
+
+\begin{enumerate}
+    \item Powered by pp chain
+    \item $\nu \approx 4 \implies$ radiative core
+    \item Cool envelope $\implies$ high HI opacity $\implies$ convective envelope
+    \item Slow rotating
+\end{enumerate}
+
+ZAMS $M \gtrsim 1.5M_\odot$
+
+\begin{enumerate}
+    \item Powered by CNO
+    \item $\nu \approx 15 \implies$  convective core
+    \item Hot envelopes w/ HII $\implies$ lower opacity $\implies$ radiative envelope
+    \item Fast rotating
+\end{enumerate}
+
+Main sequence is slow, fusing 8 (4 protons, 4 electrons) to 3 (1 $\alpha$, 2 electrons) at constant pressure. $P = nkT \implies n \downarrow, T\uparrow \implies L \uparrow$. Ends when H core is exhausted, core contracts on Kelvin-Helmholtz timescale in search of new fuel.
+
+\subsection{Red giants}
+
+Core contraction initiates H fusion in thin shells via CNO cycle. Lifetime $\sim 10\%$ of main sequence lifetime.
+
+\section{RGB evolution, Elements, Radiation pressure and winds}
+
+\subsection{Helium flash}
+
+At the tip of the RGB, H fusion via CNO, next steps depend on mass
+
+\begin{itemize}
+    \item $M \lesssim 0.3M_\odot$: Never developed a core, never enetered RGB to begin with
+    \item $M \lesssim 0.4M_\odot$: Degenerate, too cool to fuse He, life ends at RGB
+    \item $M \gtrsim 1.5M_\odot$: Non-degenerate, smooth transition to He burning, $\rho_c > 10^6 {\rm g\; cm^{-3}}, T_c > 10^8{\rm K}$.\\
+
+    When is something degenerate? - when it acts like a fool\\
+
+    \begin{itemize}
+        \item $\frac{3}{2}kT \gtrsim \varepsilon_F$ - non-degenerate
+        \item $\frac{3}{2}kT \lesssim \varepsilon_F$ - degenerate \textbf{double check this}
+    \end{itemize}
+
+    where 
+
+    \begin{equation}
+        \varepsilon_F = \frac{h^2}{2m_e}\left[3\pi^2\frac{Z}{A}\frac{\rho}{m_H}\right]^{2/3}
+    \end{equation}
+
+    \item $0.4M_\odot \leq M \leq 1.5M_\odot$: Degenerate and hot enough for He fusion. Since non-degenerate electrons follow no temperature dependence $P \propto \rho^{5/3}$, fusion will start but no expansion takes place. For $\varepsilon \propto T^\nu$, and $\nu \approx 40$ for the Helium flash, there will be a rapid burst of fusion until $\frac{3}{2}kT \gtrsim \varepsilon_F$. Opposite of RGB transition happens, core expands, but outer radius contracts.
+\end{itemize}
+
+\subsection{Horizontal branch}
+
+Stable He fusion in core
+
+\begin{itemize}
+    \item Low mass: more C, less O
+    \item High mass: more O, less C
+    \item Metal rich: red/cool during He fusion
+    \item Metal poor: blue/hot during He fusion
+\end{itemize}
+
+\subsection{AGB}
+
+Core He fusion is roughly 1\% of the time of main sequence burning. Core He burning leads to shell H and He burning. Thermal instabilities change rate of fusion and mix CNO materials to outer envelopes. Thermal pulsing leads to mass loss - exposing CO core, creating a planetary nebula.\\
+
+Once envelopes mix into ISM, core becomes at CO WD w/ $M \sim 0.6 M_\odot$, $R \sim R_\oplus$, $\rho \sim 10^6 {\rm g/cm^3}$. There are two classes of WD
+
+\begin{itemize}
+    \item DA WD: H envelope
+    \item DB WD: He envelope
+\end{itemize}
+
+\subsection{Further evolution}
+The last few fuels that stars use up before they die
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c|c|c|c}
+        Fuel & $T_c$ (K) & Duration (years) & Nuclear product \\
+        \hline
+        C & $3*10^8$ & $10^4$ & Ne, Na \\
+        \hline
+        Ne & $8*10^8$ & $10^3$ & Mg, O\\
+        \hline
+        O & $1*10^9$ & $1$ & Si, S\\
+        \hline
+        Si & $3*10^9$ & $0.01$ & $^{56}$Ni $\to$ $^{56}$Fe
+        
+    \end{tabular}
+    \label{tab:placeholder}
+\end{table}
+
+No nuclear energy is extracted passed the iron core due to binding energies of iron-peak materials. Heavier elements or created via neutron capture.
+
+\begin{itemize}
+    \item Slow process: \textbf{s-process} - Neutron capture on times longer than $\beta$-decay
+    \item Rapid process: \textbf{r-process} - Neutron capture on times shorter than $\beta$-decay, thought to come from NS mergers
+\end{itemize}
+
+\section{Variables, Explosive variables, Standard candles}
+
+\subsection{Variable classes}
+
+\begin{itemize}
+    \item Eclipsing binary - variations due to obscuration of companions or from tidal forces in close binaries
+        \begin{enumerate}
+            \item Typically small separations, probability roughly follows
+
+            \begin{equation}
+                P \sim \frac{R_1 + R_2}{a}
+            \end{equation}
+
+            \item Orbital inclination $\sim 90^\circ$ - needs to obscure from our view
+
+            \item Allows for measurements of radii
+
+            \item Orbital velocity allow for measurements (not inferences) of masses
+
+            \item Possible ellipsoidal variation due to tidal forces on stars in close systems
+        \end{enumerate}
+
+
+        \item Rotating stars (w/ spots)
+
+        \begin{enumerate}
+            \item Most stars - only appreciably measurable on stars with prominent spots and rotation
+
+            \item Typically young stars, or low mass stars, with strong magnetic fields
+
+            \item Fast rotations possibly from exchange of angular momentum in binary interaction
+        \end{enumerate}
+
+        \item T Tauri/FU Orionis - non-constant mass accretion from disks
+        \begin{enumerate}
+            \item T Tauri - accretion is consistent\\
+            FU Orionis - accretion is episodic
+            \item Variations due to rotation
+        \end{enumerate}
+
+        \item Pulsating variable
+
+        \begin{enumerate}
+            \item Radial oscillations due to ionization/recombination events on $t_{dyn}$ timescales
+
+            \item Non-radial oscillations due to gravity (g-modes) or pressure (p-modes)
+
+            \item Instability string in HR diagram - further typing
+
+            \begin{enumerate}
+                \item Type I Cepheids - massive, metal rich, period days - months
+
+                \item Type II Cepheids - low mass, metal poor, fainter
+
+                \item RR Lyrae - Horizontal branch - hours to days
+
+                \item $\beta$ Cepheids - massive main sequence
+            \end{enumerate}
+
+            \item Mira variables - red supergiants 100 days to 700 days
+
+            \item Sun-like stars - non-radial oscillations due to convection $\sim$ 5 mins
+        \end{enumerate}
+\end{itemize}
+
+\subsection{Explosive variables}
+\begin{itemize}
+    \item Classical novae - Explosions of H shells accreted onto surface of CO WD from a companion, recurs on periods of of 100s of years to 1000s
+
+    \item Dwarf novae - fainter + more regular
+
+    \item Supernovae - brightest common transients
+    \begin{enumerate}
+        \item Brighten in days, dim in months
+
+        \item High ejecta velocities (1000 km/s) create broad emission lines
+
+        \item Eject $\sim 1 M_\odot$ of material that remains visible for 1000s of years (Cas A, Crab nebula)
+
+        \item MW-like galaxies expect about 1 per century
+
+        \item Two classes
+        \begin{enumerate}
+            \item Type I - No H - Ocur in all galaxies from complete thermonuclear explosion of C WD
+
+            \item Type II - H present - Star forming regions - when AGB? stars explode, lead with a blast of neutrinos, end in BH or NS.
+        \end{enumerate}
+    \end{enumerate}
+\end{itemize}
+
+\section{Binaries, Algol paradox, Mass transfer}
+
+\subsection{Binaries}
+
+Lots of star are in multiples
+\begin{itemize}
+    \item $M > M_\odot$: more than 50\% of stars in binary+
+    \item $M \sim M_\odot$: about 50\% in binary+
+    \item $M < M_\odot$: less than 50\% in binary+
+\end{itemize}
+
+Since, in the solar neighborhood, median stellar age is less than $1M_\odot$, most stars are single.
+
+\begin{itemize}
+    \item Spectroscopic binaries - not spatially resolved, only measured in Doppler shifts of spectral lines
+    \begin{itemize}
+        \item SB1 - only on set of spectral lines visible from orbital motions
+
+        \item SB2 - two sets of lines oscillating in opposite directions visible
+    \end{itemize}
+
+    \item Visual binaries - spatially resolved
+
+    \item Astrometric binaries - only measured in astrometry - only see one companion - other might be obscured, BH, WD, or BD.
+
+    \item Common proper motion binary - wide binary going in same general direction, no visible orbital motion
+\end{itemize}
+
+\subsection{Algol paradox}
+
+It is possible to detect binaries where a less massive star seems more evolved than a more massive companion. Under regular stellar evolution, this seems impossible (assuming they formed at similar times). The solution is that  they did form at similar times and underwent regular evolution, until the more evolved star accreted mass to the lower mass star, creating the paradox. This mass transfer is triggered when the larger mass star fills its Roche lobe.
+
+\begin{itemize}
+    \item Detached system - neither star has filled Roche lobe
+
+    \item Semi-attached - one has filled Roche lobe
+
+    \item Contact binary - both have  filled Roche lobes
+
+    \item Common envelope - both have overfilled Roche lobes, common photosphere but two cores
+\end{itemize}
+
+\subsection{Steps in mass transfer}
+Take $M_1 > M_2$ and $q = \frac{M_2}{M_1} < 1$ initially
+
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+
+\end{document}
